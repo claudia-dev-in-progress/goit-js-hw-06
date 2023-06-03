@@ -1,18 +1,23 @@
 let form = document.querySelector(".login-form");
-let emailinput = document.querySelector("[name='email']");
-let passwordinput = document.querySelector("[name='password']");
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
   if (
-    emailinput.value === null ||
-    passwordinput.value === null ||
-    emailinput.value === "" ||
-    passwordinput.value === ""
+    email.value === null ||
+    password.value === null ||
+    email.value === "" ||
+    password.value === ""
   ) {
     alert("Toate campurile sunt obligatorii!");
   } else {
-    let completedForm = {};
-    const elements = form.elements;
-    console.log(elements);
+    let completedForm = {
+      email: email.value,
+      password: password.value,
+    };
+    console.log(completedForm);
+    event.currentTarget.reset();
   }
 });
